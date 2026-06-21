@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>恋爱人格测试 - 沉浸式聊天体验</title>
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+<body>
+    <div class="app-container">
+        <div id="start-screen" class="screen active">
+            <div class="start-content">
+                <div class="logo-area">
+                    <div class="pixel-couple">
+                        <svg viewBox="0 0 120 80" width="120" height="80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Left figure -->
+                            <rect x="15" y="10" width="30" height="30" rx="8" fill="#FFB6C1"/>
+                            <rect x="20" y="18" width="6" height="6" rx="2" fill="#333"/>
+                            <rect x="34" y="18" width="6" height="6" rx="2" fill="#333"/>
+                            <rect x="25" y="28" width="10" height="4" rx="2" fill="#FF6B8A"/>
+                            <rect x="18" y="40" width="24" height="25" rx="6" fill="#87CEEB"/>
+                            <rect x="12" y="42" width="8" height="18" rx="4" fill="#87CEEB"/>
+                            <rect x="40" y="42" width="8" height="18" rx="4" fill="#87CEEB"/>
+                            <rect x="18" y="65" width="8" height="12" rx="3" fill="#6BB5E0"/>
+                            <rect x="34" y="65" width="8" height="12" rx="3" fill="#6BB5E0"/>
+                            <!-- Right figure -->
+                            <rect x="75" y="10" width="30" height="30" rx="8" fill="#FFB6C1"/>
+                            <rect x="80" y="18" width="6" height="6" rx="2" fill="#333"/>
+                            <rect x="94" y="18" width="6" height="6" rx="2" fill="#333"/>
+                            <rect x="85" y="28" width="10" height="4" rx="2" fill="#FF6B8A"/>
+                            <rect x="78" y="40" width="24" height="25" rx="6" fill="#98D8C8"/>
+                            <rect x="72" y="42" width="8" height="18" rx="4" fill="#98D8C8"/>
+                            <rect x="100" y="42" width="8" height="18" rx="4" fill="#98D8C8"/>
+                            <rect x="78" y="65" width="8" height="12" rx="3" fill="#7BC4B2"/>
+                            <rect x="94" y="65" width="8" height="12" rx="3" fill="#7BC4B2"/>
+                            <!-- Holding hands -->
+                            <rect x="48" y="50" width="24" height="6" rx="3" fill="#FFB6C1"/>
+                            <!-- Hearts -->
+                            <g class="floating-heart" style="--delay: 0s">
+                                <path d="M60 30 C60 25, 55 20, 50 20 C45 20, 42 25, 42 30 C42 38, 60 48, 60 48 C60 48, 78 38, 78 30 C78 25, 75 20, 70 20 C65 20, 60 25, 60 30Z" fill="#FF6B8A" opacity="0.9"/>
+                            </g>
+                            <g class="floating-heart" style="--delay: 0.5s">
+                                <path d="M45 15 C45 12, 42 10, 39 10 C36 10, 34 12, 34 15 C34 20, 45 26, 45 26 C45 26, 56 20, 56 15 C56 12, 54 10, 51 10 C48 10, 45 12, 45 15Z" fill="#FF8FA3" opacity="0.7"/>
+                            </g>
+                            <g class="floating-heart" style="--delay: 1s">
+                                <path d="M75 15 C75 12, 72 10, 69 10 C66 10, 64 12, 64 15 C64 20, 75 26, 75 26 C75 26, 86 20, 86 15 C86 12, 84 10, 81 10 C78 10, 75 12, 75 15Z" fill="#FF8FA3" opacity="0.7"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h1>你的亲密依恋四维人格测试</h1>
+                    <p class="subtitle">沉浸式聊天场景 · 发掘你的恋爱底层DNA</p>
+                </div>
+                <div class="intro-cards">
+                    <div class="card">
+                        ❤️
+                        <span>8大心理学理论支撑</span>
+                    </div>
+                    <div class="card">
+                        💬
+                        <span>30道真实聊天场景题</span>
+                    </div>
+                    <div class="card">
+                        🐱
+                        <span>4维猫咪人格标签</span>
+                    </div>
+                </div>
+                <button id="start-btn" class="start-btn">
+                    <span>开始测试</span>
+                    →
+                </button>
+                <p class="tips">测试时间约15分钟，请找个安静的地方哦~</p>
+            </div>
+        </div>
+
+        <div id="chat-screen" class="screen">
+            <div class="chat-header">
+                <div class="back-btn" onclick="goBack()">
+                    ←
+                </div>
+                <div class="chat-title">恋爱互动测试</div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">1/30</div>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+            </div>
+            <div id="options-area" class="options-area">
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="result-header">
+                    <div class="result-icon" id="result-icon">
+                        <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="5" width="10" height="10" rx="3" fill="#FFB6C1"/><rect x="10" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="14" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="6" y="15" width="14" height="12" rx="3" fill="#87CEEB"/><rect x="22" y="5" width="10" height="10" rx="3" fill="#FFB6C1"/><rect x="24" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="28" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="20" y="15" width="14" height="12" rx="3" fill="#98D8C8"/><rect x="18" y="18" width="4" height="2" rx="1" fill="#FFB6C1"/></svg>
+                    </div>
+                    <h2>你的恋爱人格是</h2>
+                    <div class="personality-code" id="personality-code">ESTD</div>
+                    <div class="personality-name" id="personality-name">粘人小猫咪</div>
+                </div>
+                <div class="dimension-grid">
+                    <div class="dim-card" id="dim-ei">
+                        <div class="dim-icon">🌐</div>
+                        <div class="dim-name">互动驱动</div>
+                        <div class="dim-bar">
+                            <div class="dim-bar-fill" id="bar-ei"><span class="dim-bar-text" id="val-ei">E</span></div>
+                        </div>
+                    </div>
+                    <div class="dim-card" id="dim-su">
+                        <div class="dim-icon">💖</div>
+                        <div class="dim-name">依恋内核</div>
+                        <div class="dim-bar">
+                            <div class="dim-bar-fill" id="bar-su"><span class="dim-bar-text" id="val-su">S</span></div>
+                        </div>
+                    </div>
+                    <div class="dim-card" id="dim-tp">
+                        <div class="dim-icon">🎁</div>
+                        <div class="dim-name">社交给付</div>
+                        <div class="dim-bar">
+                            <div class="dim-bar-fill" id="bar-tp"><span class="dim-bar-text" id="val-tp">T</span></div>
+                        </div>
+                    </div>
+                    <div class="dim-card" id="dim-df">
+                        <div class="dim-icon">🔮</div>
+                        <div class="dim-name">精神深度</div>
+                        <div class="dim-bar">
+                            <div class="dim-bar-fill" id="bar-df"><span class="dim-bar-text" id="val-df">D</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="theory-section">
+                    <h3 class="theory-title">📊 四大维度深度分析</h3>
+                    
+                    <div class="theory-card">
+                        <div class="theory-header">
+                            <div class="theory-icon">⚖️</div>
+                            <div class="theory-name">互惠指数</div>
+                        </div>
+                        <div class="theory-score-row">
+                            <span class="theory-score" id="reciprocity-score">85</span>
+                            <span class="theory-level" id="reciprocity-level">高互惠高频延续型</span>
+                        </div>
+                        <div class="theory-bar-container">
+                            <div class="theory-bar-fill" id="reciprocity-bar"></div>
+                        </div>
+                        <p class="theory-desc" id="reciprocity-desc"></p>
+                    </div>
+
+                    <div class="theory-card">
+                        <div class="theory-header">
+                            <div class="theory-icon">🤝</div>
+                            <div class="theory-name">社会支持力</div>
+                        </div>
+                        <div class="theory-score-row">
+                            <span class="theory-level" id="support-type">疗愈级给付者</span>
+                        </div>
+                        <div class="support-bars">
+                            <div class="support-bar-item">
+                                <span class="support-label">情感支持</span>
+                                <div class="support-bar-bg">
+                                    <div class="support-bar-fill emotional" id="support-emotional"></div>
+                                </div>
+                            </div>
+                            <div class="support-bar-item">
+                                <span class="support-label">实际帮助</span>
+                                <div class="support-bar-bg">
+                                    <div class="support-bar-fill practical" id="support-practical"></div>
+                                </div>
+                            </div>
+                            <div class="support-bar-item">
+                                <span class="support-label">建议指导</span>
+                                <div class="support-bar-bg">
+                                    <div class="support-bar-fill advice" id="support-advice"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="theory-desc" id="support-desc"></p>
+                    </div>
+
+                    <div class="theory-card">
+                        <div class="theory-header">
+                            <div class="theory-icon">❤️</div>
+                            <div class="theory-name">依恋类型</div>
+                        </div>
+                        <div class="attachment-pie" id="attachment-pie">
+                            <div class="attachment-center">
+                                <div class="attachment-label" id="attachment-secure">60%</div>
+                                <div class="attachment-label" id="attachment-anxious">25%</div>
+                                <div class="attachment-label" id="attachment-avoidant">15%</div>
+                            </div>
+                        </div>
+                        <div class="attachment-bars">
+                            <div class="attachment-bar-item">
+                                <span class="attachment-label-text">安全型</span>
+                                <div class="attachment-bar-bg">
+                                    <div class="attachment-bar-fill secure" id="attachment-secure-bar"></div>
+                                </div>
+                            </div>
+                            <div class="attachment-bar-item">
+                                <span class="attachment-label-text">焦虑型</span>
+                                <div class="attachment-bar-bg">
+                                    <div class="attachment-bar-fill anxious" id="attachment-anxious-bar"></div>
+                                </div>
+                            </div>
+                            <div class="attachment-bar-item">
+                                <span class="attachment-label-text">回避型</span>
+                                <div class="attachment-bar-bg">
+                                    <div class="attachment-bar-fill avoidant" id="attachment-avoidant-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="theory-desc" id="attachment-desc"></p>
+                    </div>
+
+                    <div class="theory-card">
+                        <div class="theory-header">
+                            <div class="theory-icon">🧅</div>
+                            <div class="theory-name">渗透与披露深度</div>
+                        </div>
+                        <div class="theory-score-row">
+                            <span class="theory-score" id="disclosure-score">70</span>
+                            <span class="theory-level" id="disclosure-level">适度开放者</span>
+                        </div>
+                        <div class="disclosure-bars">
+                            <div class="disclosure-bar-item">
+                                <span class="disclosure-label">深层</span>
+                                <div class="disclosure-bar-bg">
+                                    <div class="disclosure-bar-fill deep" id="disclosure-deep"></div>
+                                </div>
+                            </div>
+                            <div class="disclosure-bar-item">
+                                <span class="disclosure-label">中层</span>
+                                <div class="disclosure-bar-bg">
+                                    <div class="disclosure-bar-fill medium" id="disclosure-medium"></div>
+                                </div>
+                            </div>
+                            <div class="disclosure-bar-item">
+                                <span class="disclosure-label">浅层</span>
+                                <div class="disclosure-bar-bg">
+                                    <div class="disclosure-bar-fill shallow" id="disclosure-shallow"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="theory-desc" id="disclosure-desc"></p>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>深度解析</h3>
+                    <div id="analysis-content" class="analysis-content"></div>
+                </div>
+                <div class="advice-section">
+                    <h3>恋爱小贴士</h3>
+                    <div id="advice-content" class="advice-content"></div>
+                </div>
+                <div class="share-section">
+                    <button id="share-btn" class="share-btn">
+                        🔗
+                        <span>分享给好友</span>
+                    </button>
+                    <button id="restart-btn" class="restart-btn">
+                        🔄
+                        <span>再测一次</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="share-modal">
+        <div class="share-modal-overlay" onclick="closeShareModal()"></div>
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>分享你的恋爱人格</h3>
+                <button class="share-modal-close" onclick="closeShareModal()">
+                    ✕
+                </button>
+            </div>
+            <div id="share-image-container" class="share-image-container">
+                <!-- Generated image will be inserted here -->
+            </div>
+            <div class="share-modal-actions">
+                <button id="copy-image-btn" class="share-action-btn" onclick="copyShareImage()">
+                    📋
+                    <span>复制图片</span>
+                </button>
+                <button id="download-image-btn" class="share-action-btn" onclick="downloadShareImage()">
+                    📥
+                    <span>保存图片</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden share card template -->
+    <div id="share-card-template" class="share-card-template">
+        <div class="share-card">
+            <div class="share-card-header">
+                <div class="share-card-icon" id="share-card-icon">
+                    <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="5" width="10" height="10" rx="3" fill="#FFB6C1"/><rect x="10" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="14" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="6" y="15" width="14" height="12" rx="3" fill="#87CEEB"/><rect x="22" y="5" width="10" height="10" rx="3" fill="#FFB6C1"/><rect x="24" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="28" y="8" width="2" height="2" rx="1" fill="#333"/><rect x="20" y="15" width="14" height="12" rx="3" fill="#98D8C8"/><rect x="18" y="18" width="4" height="2" rx="1" fill="#FFB6C1"/></svg>
+                </div>
+                <div class="share-card-title">恋爱人格测试</div>
+            </div>
+            <div class="share-card-body">
+                <div class="share-card-code" id="share-card-code">ESTD</div>
+                <div class="share-card-name" id="share-card-name">粘人小猫咪</div>
+                <div class="share-card-dimensions" id="share-card-dimensions">
+                    <div class="share-dim-item">
+                        <span class="share-dim-label">互动驱动</span>
+                        <span class="share-dim-value" id="share-dim-ei">E</span>
+                    </div>
+                    <div class="share-dim-item">
+                        <span class="share-dim-label">依恋内核</span>
+                        <span class="share-dim-value" id="share-dim-su">S</span>
+                    </div>
+                    <div class="share-dim-item">
+                        <span class="share-dim-label">社交给付</span>
+                        <span class="share-dim-value" id="share-dim-tp">T</span>
+                    </div>
+                    <div class="share-dim-item">
+                        <span class="share-dim-label">精神深度</span>
+                        <span class="share-dim-value" id="share-dim-df">D</span>
+                    </div>
+                </div>
+                <div class="share-card-theory" id="share-card-theory">
+                    <div class="share-theory-item">
+                        <span class="share-theory-label">互惠指数</span>
+                        <span class="share-theory-value" id="share-theory-reciprocity">85</span>
+                    </div>
+                    <div class="share-theory-item">
+                        <span class="share-theory-label">依恋类型</span>
+                        <span class="share-theory-value" id="share-theory-attachment">安全型</span>
+                    </div>
+                </div>
+            </div>
+            <div class="share-card-footer">
+                <span>扫码测测你的恋爱人格</span>
+                <div class="share-card-qr">
+                    <div class="qr-placeholder">QR</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="html2canvas.min.js"></script>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
