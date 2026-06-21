@@ -121,14 +121,14 @@ const questions = [
     },
     {
         id: 11,
-        type: 'routine',
-        scenario: "Ta：今天开会被领导当众骂了一顿😭",
-        message: "今天开会被领导当众骂了一顿😭",
+        type: 'crisis',
+        scenario: "Ta：今天被领导批评了，明明不是我的问题，心情好差...",
+        message: "今天被领导批评了，明明不是我的问题，心情好差...",
         options: [
-            { text: "这也太委屈了吧……辛苦你了，想不想吃小聪明蛋糕？", scores: { E: 2, S: 2, T: 2, D: 0 }, reciprocity: 'high', supportType: 'emotional', attachment: 'secure', disclosure: 'medium' },
-            { text: "为什么被骂？问题解决了吗？", scores: { E: 1, S: 0, T: 1, D: 0 }, reciprocity: 'medium', supportType: 'advice', attachment: 'secure', disclosure: 'medium' },
-            { text: "我以前领导更夸张，天天PUA我们，我都不知道自己是怎么熬过来的。", scores: { E: -1, S: 0, T: 0, D: 0 }, reciprocity: 'medium', supportType: 'emotional', attachment: 'anxious', disclosure: 'medium' },
-            { text: "肯定是你哪里没做好。", scores: { E: 0, S: 0, T: 0, D: -1 }, reciprocity: 'low', supportType: 'none', attachment: 'avoidant', disclosure: 'shallow' }
+            { text: "抱抱你！先别难过，你一直都是很努力的。要不要我们一起分析一下，看看怎么跟领导沟通？或者我们先去吃顿好的，转换一下心情？", scores: { E: 2, S: 2, T: 1, D: 1 }, reciprocity: 'high', supportType: 'emotional', attachment: 'secure', disclosure: 'deep' },
+            { text: "具体是什么情况？领导怎么说的？你有没有留存邮件或者记录？我们可以梳理一下时间线，看看责任到底在谁。", scores: { E: 1, S: 0, T: 2, D: 0 }, reciprocity: 'medium', supportType: 'advice', attachment: 'secure', disclosure: 'medium' },
+            { text: "太过分了！凭什么批评你！我也好生气，这些人根本不了解你的辛苦。这种人就不配当领导！", scores: { E: 2, S: -2, T: -1, D: 1 }, reciprocity: 'high', supportType: 'emotional', attachment: 'anxious', disclosure: 'medium' },
+            { text: "嗯，别想了。我这边也有点忙，你先休息吧。", scores: { E: 0, S: 0, T: -1, D: -2 }, reciprocity: 'low', supportType: 'none', attachment: 'avoidant', disclosure: 'shallow' }
         ]
     },
     {
